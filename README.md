@@ -30,3 +30,4 @@
 | RaphielHS | Readme.md | 6/9/2022|
 | RaphielHS | Research and Development | 6/9/2022|
 | RaphielHS | The actual code | 6/9/2022|
+| Google    | solved 75% of my confusion | - |
