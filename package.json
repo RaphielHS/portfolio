@@ -13,7 +13,7 @@
     "react-dom": "^18.1.0",
     "react-parallax": "^3.5.1",
     "react-parallax-mouse": "^1.7.3",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.7.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
