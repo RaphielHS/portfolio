@@ -47,19 +47,22 @@ const insideStyles = {
   transform: "translate(-50%,-50%)"
 };
 
-React.useEffect(() => {
-  let current = domRef.current;
-  const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              // Delay setting isVisible to true by props.delay milliseconds
-              setTimeout(() => setVisible(true), props.delay || 0);
-          }
-      });
-  });
-  observer.observe(current);
-  return () => observer.unobserve(current);
-}, []);
+function FadeInSection(props) {
+  React.useEffect(() => {
+    let current = domRef.current
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Delay setting isVisible to true by props.delay milliseconds
+                setTimeout(() => setVisible(true), props.delay || 0);
+            }
+        });
+    });
+    observer.observe(current);
+    return () => observer.unobserve(current);
+  }, []);
+}
+
 
 
 function App() {
