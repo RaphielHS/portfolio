@@ -50,17 +50,18 @@ const insideStyles = {
 function FadeInSection(props) {
   const [isVisible, setVisible] = React.useState(false);
   const domRef = React.useRef();
-  const current = domRef.current;
+  let current = domRef.current;
   React.useEffect(() => {
-      const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                  setVisible(entry.isIntersecting);
-              }
-          });
-      });
-      observer.observe(current);
-      return () => observer.unobserve(current);
+    let current2 = domRef.current;
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setVisible(entry.isIntersecting);
+            }
+        });
+    });
+    observer.observe(current2);
+    return () => observer.unobserve(current2);
   }, []);
   setTimeout(() => {}, props.delay);
   return (
@@ -110,7 +111,7 @@ function App() {
           </nav>
           <FadeInSection>
             <div style={{fontSize: 20}}>
-              <img style={{marginTop: 5, borderRadius: '200px', width: 450}} src={process.env.PUBLIC_URL + "/avatar/1.jpg"} alt="Image :D"/>
+              <img style={{marginTop: 5, borderRadius: '200px', width: 450}} src={process.env.PUBLIC_URL + "/avatar/1.jpg"} alt="saodjaidbasjvdasdkl :D"/>
               <FadeInSection>
                 <h1>Hello, My Name is <h1>Raphiel</h1></h1>
                 <FadeInSection>
@@ -134,7 +135,7 @@ function App() {
                         <div class="card">
                           <div class="content">
                             <div class="imgBx">
-                              <img alt='thumbnail' src={!d.thumbnail ? process.env.PUBLIC_URL + "/images/1.jpeg" : d.thumbnail}/>
+                              <img alt='saodjaidbasjvdasdkl' src={!d.thumbnail ? process.env.PUBLIC_URL + "/images/1.jpeg" : d.thumbnail}/>
                             </div>
                             <div class="contentBx">
                               <h3>{!d.title? 'Unnamed' : d.title}<br/><span>{!d.desc ? '' : d.desc}</span></h3>
