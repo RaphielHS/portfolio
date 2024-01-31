@@ -1,18 +1,29 @@
-on:
-  push:
-    branches:
-      - "main" # change to the branch you wish to deploy from
+name: React App CI
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+on: [push]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
     steps:
-    - id: build-publish
-      uses: bitovi/github-actions-react-to-github-pages@v1.2.2
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
       with:
-        path: build # change to your build folder
+        node-version: ${{ matrix.node-version }}
+    - name: Install Dependencies
+      run: npm ci
+    - name: Build
+      run: npm run build
+    # - name: Test
+    #   run: npm test
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.5
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: build # The folder the action should deploy.
