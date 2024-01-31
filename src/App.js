@@ -50,7 +50,6 @@ const insideStyles = {
 function FadeInSection(props) {
   const [isVisible, setVisible] = React.useState(false);
   const domRef = React.useRef();
-  let current = domRef.current;
   React.useEffect(() => {
     let current2 = domRef.current;
     const observer = new IntersectionObserver(entries => {
