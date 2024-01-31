@@ -47,31 +47,19 @@ const insideStyles = {
   transform: "translate(-50%,-50%)"
 };
 
-function FadeInSection(props) {
-  setTimeout(function() {}, !props.delay ? 0 : props.delay)
-  const [isVisible, setVisible] = React.useState(false);
-  const domRef = React.useRef();
-  React.useEffect(() => {
-      const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                  setVisible(entry.isIntersecting);
-              }
-          });
+React.useEffect(() => {
+  let current = domRef.current;
+  const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              // Delay setting isVisible to true by props.delay milliseconds
+              setTimeout(() => setVisible(true), props.delay || 0);
+          }
       });
-      observer.observe(domRef.current);
-      return () => observer.unobserve(domRef.current);
-  }, []);
-  setTimeout(() => {}, props.delay);
-  return (
-    <div
-        className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
-        ref={domRef}>
-        {props.children}
-    </div>
-  );
-}
-
+  });
+  observer.observe(current);
+  return () => observer.unobserve(current);
+}, []);
 
 
 function App() {
