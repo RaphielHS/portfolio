@@ -13,14 +13,14 @@
 ```
 2. open `cmd` and run
 ```batch
-> npm i
-> npm start
+npm i
+npm start
 ```
 ### How to start the Server
 ```batch
-> npm start
+npm run start
 ^^ Starts the server normaly (Debug/Development)
-> npm build
+npm run build
 ^^ Starts the server as production 
 ```
 
